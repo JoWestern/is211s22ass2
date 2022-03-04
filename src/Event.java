@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eventsim;
 
 
 /**
@@ -16,6 +15,7 @@ public abstract class Event {
      * When the event happens
      */
     int time;
+    Customer customer;
 
 
     public Event(int time) {
@@ -27,6 +27,15 @@ public abstract class Event {
         return time;
     }
 
+    //public String nextEvent() { return this.happen().toString(); };
+
+    public Customer getCustomer() {
+        return this.customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     /**
      * Make the changes to the simulated supermarket that happens as a

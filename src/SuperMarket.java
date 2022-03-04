@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supermarket;
 
-import eventsim.Event;
-import eventsim.EventSim;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +14,13 @@ import java.util.List;
  */
 public class SuperMarket {
 
-    public static void main(String[] arts) {
+    public static void main(String[] args) {
         SuperMarket supern = new SuperMarket();
         supern.startSim();
     }
 
-    public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 4;
+    private int NUM_CHECKOUTS = Constants.SM_NUM_CHECKOUTS;
+    private int NUM_CUSTOMERS = Constants.SM_NUM_CUSTOMERS;
 
     Checkout[] checkouts;
     List<Customer> customers;
@@ -32,15 +29,22 @@ public class SuperMarket {
 
     public SuperMarket() {
         checkouts = new Checkout[NUM_CHECKOUTS];
+
         for (int i = 0; i < NUM_CHECKOUTS; i++)
             checkouts[i] = new Checkout(this, i);
+
         customers = new ArrayList<>();
         init = new ArrayList<Event>();
+
         for (int i = 0; i < NUM_CUSTOMERS; i++) {
-            Customer c = new Customer(this, i);
-            init.add(new BeginShoppingEvent(c));
+            Customer c = new Customer(this, i, checkouts);
+            init.add(new EnterShopEvent(c));
             customers.add(c);
         }
+    }
+
+    public Checkout[] getCheckouts() {
+        return checkouts;
     }
 
 

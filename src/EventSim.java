@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eventsim;
 
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Random;
+import java.sql.SQLOutput;
+import java.text.DecimalFormat;
+import java.util.*;
 
 
 /**
@@ -54,7 +53,7 @@ public class EventSim {
 
 
     public EventSim() {
-        eventQueue = new PriorityQueue<>(new EventTimeComparator());
+        eventQueue = new PriorityQueue<Event>(new EventTimeComparator());
         random = new Random(42);
     }
 
@@ -65,8 +64,9 @@ public class EventSim {
      * @param initialEvents
      */
     public void setup(List<Event> initialEvents) {
-        for (Event e : initialEvents)
+        for (Event e : initialEvents){
             eventQueue.add(e);
+        }
     }
 
 
@@ -76,6 +76,10 @@ public class EventSim {
         eventQueue.add(e);
     }
 
+    public String getMins(int clock) {
+        String clockMins = formatMins.format((double)clock/60);
+        return clockMins;
+    }
 
     /**
      * Run the simulation. Advances the time (clock) to the time when the next
@@ -83,15 +87,24 @@ public class EventSim {
      * is empty. You can also rewrite this to stop at a predetermined time (e.g.
      * closing time)
      */
+
+    DecimalFormat formatMins = new DecimalFormat("#.##");
+    DecimalFormat formatHrs = new DecimalFormat("#.#");
+    String clockMins;
+
     public void run() {
         while (!eventQueue.isEmpty()) {
             Event e = eventQueue.poll();
             clock = e.getTime();
             addEvent(e.happen());
 
-            System.err.format("Time %d: Processing %s. Event queue:\n", clock, e.toString());
+            System.err.format("Time "+ getMins(clock) +" minutes: Processing %s. Event queue:\n", e.toString());
             for (Event qe : eventQueue)
                 System.err.println("     " + qe);
         }
+        clockMins = formatMins.format((double)clock/60);
+        String clockHours = formatHrs.format((double)(clock/60)/60);
+        System.out.println("Final clock = " + clockHours + " hours or " + getMins(clock) + " minutes");
     }
 }
+
