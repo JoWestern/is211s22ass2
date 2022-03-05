@@ -76,11 +76,11 @@ public class EventSim {
         eventQueue.add(e);
     }
 
-    /*
+
     public String getMins(int clock) {
         String clockMins = formatMins.format((double)clock/60);
         return clockMins;
-    } */
+    }
 
     /**
      * Run the simulation. Advances the time (clock) to the time when the next
@@ -99,10 +99,12 @@ public class EventSim {
             clock = e.getTime();
             addEvent(e.happen());
 
-            System.err.format("Time "+ clock +": Processing %s. Event queue:\n", e.toString());
-            for (Event qe : eventQueue)
-                System.err.println("     " + qe);
+            System.err.format("Time "+ getMins(clock) +" minutes: Processing %s.\n", e.toString());
+           /* for (Event qe : eventQueue)
+                System.err.println("     " + qe);*/
         }
+
+
         clockMins = formatMins.format((double)clock/60);
         String clockHours = formatHrs.format((double)(clock/60)/60);
         System.out.println("Final time = " + clockHours + " hours or " + clockMins + " minutes");
