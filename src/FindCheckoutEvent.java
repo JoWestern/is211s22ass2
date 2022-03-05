@@ -45,7 +45,7 @@ public class FindCheckoutEvent extends Event {
         return checkouts[smallestQueueIndex];
     }
 
-    private Checkout findLargestQueue(Checkout[] checkouts) {
+    /*private Checkout findLargestQueue(Checkout[] checkouts) {
         if(checkouts.length == 1) {
             return checkouts[0];
         }
@@ -61,7 +61,7 @@ public class FindCheckoutEvent extends Event {
             }
         }
         return checkouts[largestQueueIndex];
-    }
+    } */
 
     private int getCheckoutDuration(Customer customer) {
         int waitTime = Constants.CHECKOUT_PAY_DURATION + (Constants.CHECKOUT_PROD_DURATION * customer.numProducts);

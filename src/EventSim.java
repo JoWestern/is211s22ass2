@@ -99,13 +99,13 @@ public class EventSim {
             clock = e.getTime();
             addEvent(e.happen());
 
-            System.err.format("Time "+ clock +" minutes: Processing %s. Event queue:\n", e.toString());
+            System.err.format("Time "+ clock +": Processing %s. Event queue:\n", e.toString());
             for (Event qe : eventQueue)
                 System.err.println("     " + qe);
         }
         clockMins = formatMins.format((double)clock/60);
         String clockHours = formatHrs.format((double)(clock/60)/60);
-        System.out.println("Final clock = " + clockHours + " hours or " + clockMins + " minutes");
+        System.out.println("Final time = " + clockHours + " hours or " + clockMins + " minutes");
     }
 }
 

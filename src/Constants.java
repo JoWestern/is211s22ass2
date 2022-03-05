@@ -1,21 +1,16 @@
 public class Constants {
-    // default value 2
+    //constants for the supermarket
     public static final int SM_NUM_CHECKOUTS = 2;
-    // default value: 50
     public static final int SM_NUM_CUSTOMERS = 20;
-    // default value: 200
+
+    //constants for the customer
     public static final int CUSTOMER_MAX_PRODUCTS = 50;
-    // default value: 0
     public static final int CUSTOMER_MIN_PRODUCTS = 2;
 
-    public static final int CUSTOMER_MAX_SHOPPING_TIME = 10800;
+    //constant for time per product during checkout
     public static final int TIME_PER_PRODUCT = 10;
 
-    //Queues
-    // Statisk mengde tid for å se etter kasse. Uavhengig av om det er kø eller ikke.
-    public static final int CUSTOMER_FIND_QUEUE_DURATION = 5;
-
-    //Checkout
+    //constants for checkout
     public static final int CHECKOUT_PROD_DURATION = 2;
     public static final int CHECKOUT_PAY_DURATION = 10;
 }
