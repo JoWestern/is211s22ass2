@@ -31,7 +31,10 @@ public class CheckoutEvent extends Event {
         // Returns a new checkoutEvent
         //customer.totalTime = EventSim.getClock() + customer.enterQueueTime + customer.productPickingDuration + customer.checkoutDuration;
         //System.out.println(customer.name + " enters queue at time " + customer.totalTime);
-        return new CashierEvent(getTime() + getPayTime(), this.checkout, this.customer);
+        //return new CashierEvent(getTime() + getPayTime(), this.checkout, this.customer);
+
+        checkout.customer = null;
+        return new LeaveSupermarketEvent(getTime(), customer);
     }
 
     private int getPayTime() {
@@ -42,7 +45,8 @@ public class CheckoutEvent extends Event {
 
     @Override
     public String toString() {
-        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.totalTime + '}';
+        return customer.name + " starts checkout and pays";
+        /*return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.totalTime + '}'; */
     }
 }

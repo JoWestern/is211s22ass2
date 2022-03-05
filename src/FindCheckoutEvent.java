@@ -10,7 +10,8 @@ public class FindCheckoutEvent extends Event {
     public Event happen() {
         //customer.totalTime += customer.enterQueueTime;
         Checkout checkout = findSmallestQueue(customer.checkouts);
-        Checkout longestCheckoutQueue = findLargestQueue(customer.checkouts);
+        //Checkout longestCheckoutQueue = findLargestQueue(customer.checkouts);
+        customer.shortestQueue = checkout;
 
         int waitTime = 0;
         for (Customer cust : checkout.customers) {
@@ -20,8 +21,8 @@ public class FindCheckoutEvent extends Event {
             waitTime += getCheckoutDuration(checkout.customer);
         }
 
-        customer.longestQueue = longestCheckoutQueue.getSize();
-        customer.longestQueueName = longestCheckoutQueue.getName();
+        //customer.longestQueue = longestCheckoutQueue.getSize();
+        //customer.longestQueueName = longestCheckoutQueue.getName();
         checkout.addCustomer(customer);
         return new StandInQueueEvent(getTime() + waitTime, checkout, customer);
     }
@@ -69,7 +70,8 @@ public class FindCheckoutEvent extends Event {
 
     @Override
     public String toString() {
-        return "FindCheckoutEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.shoppingDuration + '}';
+        return customer.name + " has picked " + customer.numProducts + " products, and looks for a checkout";
+        /*return "FindCheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';*/
     }
 }

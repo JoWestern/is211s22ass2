@@ -19,7 +19,12 @@ public class StandInQueueEvent extends Event {
 
     @Override
     public String toString() {
-        return "StandInQueueEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.shoppingDuration + '}';
+        if (checkout == null) {
+            return customer.name + " enters queue";
+        } else {
+            return customer.name + " is standing in line at " + customer.shortestQueue.name;
+            /*return "StandInQueueEvent{" + getTime() + " cust=" + customer.name
+                    + " " + customer.shoppingDuration + '}';*/
+        }
     }
 }

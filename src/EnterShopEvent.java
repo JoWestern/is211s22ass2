@@ -34,7 +34,8 @@ public class EnterShopEvent extends Event {
 
     @Override
     public String toString() {
-        return "EnterShopEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.shoppingDuration + '}';
+        return customer.name + " enters the supermarket";
+       /* return "EnterShopEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';*/
     }
 }
