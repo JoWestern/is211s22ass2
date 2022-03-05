@@ -43,6 +43,15 @@ public class Checkout {
         return customers.pollFirst();
     }
 
+    public int getSize() {
+        return customers.size();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+
     public void calculateDuration() {
         if(customer != null) {
             totalCheckoutDuration = PAY_DURATION + (PROD_DURATION * customer.numProducts);

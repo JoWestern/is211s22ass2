@@ -31,4 +31,10 @@ public class EnterShopEvent extends Event {
             return new LeaveSupermarketEvent(customer.endShoppingTime, customer);
         }
     }
+
+    @Override
+    public String toString() {
+        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';
+    }
 }

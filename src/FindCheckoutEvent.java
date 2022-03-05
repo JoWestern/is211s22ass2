@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Random;
-
 public class FindCheckoutEvent extends Event {
     Customer customer;
 
@@ -14,6 +10,8 @@ public class FindCheckoutEvent extends Event {
     public Event happen() {
         //customer.totalTime += customer.enterQueueTime;
         Checkout checkout = findSmallestQueue(customer.checkouts);
+        Checkout longestCheckoutQueue = findLargestQueue(customer.checkouts);
+
         int waitTime = 0;
         for (Customer cust : checkout.customers) {
             waitTime += getCheckoutDuration(cust);
@@ -21,6 +19,9 @@ public class FindCheckoutEvent extends Event {
         if (checkout.customer != null) {
             waitTime += getCheckoutDuration(checkout.customer);
         }
+
+        customer.longestQueue = longestCheckoutQueue.getSize();
+        customer.longestQueueName = longestCheckoutQueue.getName();
         checkout.addCustomer(customer);
         return new StandInQueueEvent(getTime() + waitTime, checkout, customer);
     }
@@ -43,8 +44,32 @@ public class FindCheckoutEvent extends Event {
         return checkouts[smallestQueueIndex];
     }
 
+    private Checkout findLargestQueue(Checkout[] checkouts) {
+        if(checkouts.length == 1) {
+            return checkouts[0];
+        }
+
+        int largestQueue = 1;
+        int largestQueueIndex = 0;
+
+        for (int i = 0; i < checkouts.length; i++) {
+            int size = checkouts[i].customers.size();
+            if (size > largestQueue) {
+                largestQueue = size;
+                largestQueueIndex = i;
+            }
+        }
+        return checkouts[largestQueueIndex];
+    }
+
     private int getCheckoutDuration(Customer customer) {
         int waitTime = Constants.CHECKOUT_PAY_DURATION + (Constants.CHECKOUT_PROD_DURATION * customer.numProducts);
         return waitTime;
+    }
+
+    @Override
+    public String toString() {
+        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';
     }
 }

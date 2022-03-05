@@ -16,4 +16,10 @@ public class StandInQueueEvent extends Event {
         checkout.removeCustomer();
         return new CheckoutEvent(getTime(), checkout, customer);
     }
+
+    @Override
+    public String toString() {
+        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';
+    }
 }

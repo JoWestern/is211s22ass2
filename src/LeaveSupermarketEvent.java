@@ -11,6 +11,9 @@ public class LeaveSupermarketEvent extends Event {
     @Override
     public Event happen() {
         customer.leaveTime = exitTime;
+
+        //For å se hvilken kø som var lengst da kunden skulle stille seg i kø, kan brukes til å finne bottlenecks.
+        //System.out.println(customer.name + " longest line during checkout "+ customer.longestQueueName + " size: " + customer.longestQueue);
         return null;
     }
 
@@ -18,7 +21,7 @@ public class LeaveSupermarketEvent extends Event {
     @Override
     public String toString() {
         return "EndShoppingEvent{" + getTime() + " cust=" + customer.name
-                + " " + (customer.shoppingDuration/60) + '}';
+                + " shoppping duration " + customer.shoppingDuration + '}';
     }
 }
 

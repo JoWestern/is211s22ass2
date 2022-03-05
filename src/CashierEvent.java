@@ -13,4 +13,10 @@ public class CashierEvent extends Event {
         checkout.customer = null;
         return new LeaveSupermarketEvent(getTime(), customer);
     }
+
+    @Override
+    public String toString() {
+        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.totalTime + '}';
+    }
 }

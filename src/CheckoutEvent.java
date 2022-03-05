@@ -35,7 +35,8 @@ public class CheckoutEvent extends Event {
     }
 
     private int getPayTime() {
-        return checkout.PAY_DURATION + (customer.numProducts * checkout.PROD_DURATION);
+        int payTime = checkout.PAY_DURATION + (customer.numProducts * checkout.PROD_DURATION);
+        return payTime;
     }
 
 

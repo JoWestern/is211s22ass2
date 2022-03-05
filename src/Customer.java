@@ -25,6 +25,8 @@ public class Customer {
     int endShoppingTime;
     int numProducts;
     Checkout[] checkouts;
+    int longestQueue;
+    String longestQueueName;
     int enterQueueTime;
     int queueWaitDuration;
     int checkoutDuration;

@@ -2,11 +2,11 @@ public class Constants {
     // default value 2
     public static final int SM_NUM_CHECKOUTS = 2;
     // default value: 50
-    public static final int SM_NUM_CUSTOMERS = 110;
+    public static final int SM_NUM_CUSTOMERS = 40;
     // default value: 200
-    public static final int CUSTOMER_MAX_PRODUCTS = 22;
+    public static final int CUSTOMER_MAX_PRODUCTS = 50;
     // default value: 0
-    public static final int CUSTOMER_MIN_PRODUCTS = 6;
+    public static final int CUSTOMER_MIN_PRODUCTS = 2;
 
     public static final int CUSTOMER_MAX_SHOPPING_TIME = 10800;
     public static final int TIME_PER_PRODUCT = 10;
