@@ -69,7 +69,7 @@ public class FindCheckoutEvent extends Event {
 
     @Override
     public String toString() {
-        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+        return "FindCheckoutEvent{" + getTime() + " cust=" + customer.name
                 + " " + customer.shoppingDuration + '}';
     }
 }

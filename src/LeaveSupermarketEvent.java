@@ -20,8 +20,8 @@ public class LeaveSupermarketEvent extends Event {
 
     @Override
     public String toString() {
-        return "EndShoppingEvent{" + getTime() + " cust=" + customer.name
-                + " shoppping duration " + customer.shoppingDuration + '}';
+        return "LeaveSupermarketEvent{" + getTime() + " cust=" + customer.name
+                + " " + customer.shoppingDuration + '}';
     }
 }
 

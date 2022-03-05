@@ -16,7 +16,7 @@ public class CashierEvent extends Event {
 
     @Override
     public String toString() {
-        return "CheckoutEvent{" + getTime() + " cust=" + customer.name
+        return "CashierEvent{" + getTime() + " cust=" + customer.name
                 + " " + customer.totalTime + '}';
     }
 }
