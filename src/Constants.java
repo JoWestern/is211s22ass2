@@ -7,7 +7,7 @@ public class Constants {
     public static final int CUSTOMER_MAX_PRODUCTS = 50;
     public static final int CUSTOMER_MIN_PRODUCTS = 2;
 
-    //constant for time per product during checkout
+    //constant for time for picking each product
     public static final int TIME_PER_PRODUCT = 2;
 
     //constants for checkout
