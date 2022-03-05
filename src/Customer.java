@@ -41,10 +41,10 @@ public class Customer {
         beginShoppingTime = i;
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
 
-        calculateTime();
+        fixTime();
     }
 
-    public void calculateTime() {
+    public void fixTime() {
         shoppingDuration = numProducts * Constants.TIME_PER_PRODUCT;
         endShoppingTime = beginShoppingTime + shoppingDuration;
     }
